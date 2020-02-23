@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import { Link } from "react-router-dom";
 import './login.css';
 
-const URL = 'http://localhost:9000/sessions';
+const URL = 'https://authorisation-app.herokuapp.com/sessions';
 
 export const Login = () => {
   const [email, setEmail] = useState('');

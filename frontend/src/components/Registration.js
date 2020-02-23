@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './registration.css';
 
-const URL = 'http://localhost:9000/register';
+const URL = 'https://authorisation-app.herokuapp.com/register';
 
 export const Registration = () => {
   const [name, setName] = useState('');
