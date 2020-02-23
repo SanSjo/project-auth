@@ -29,21 +29,11 @@ const User = mongoose.model('User', {
   }
 });
 
-// const authenticateUser = async (req, res, next) => {
-//   const user = await User.findOne({ accessToken: req.header('Authorization') });
-//   if (user) {
-//     req.user = user;
-//     next();
-//   } else {
-//     res.json({ loggedOut: true });
-//   }
-// };
-
 // Defines the port the app will run on. Defaults to 8080, but can be
 // overridden when starting the server. For example:
 //
 //   PORT=9000 npm start
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 9000;
 const app = express();
 
 // Add middlewares to enable cors and json body parsing
@@ -54,19 +44,22 @@ const authenticateUser = async (req, res, next) => {
   try {
     const user = await User.findOne({
       accessToken: req.header('Authorization')
-    })
+    });
+    user.password = undefined; // so password is not returned
     if (user) {
-      req.user = user
-      next()
+      req.user = user;
+      next();
     } else {
-      res.status(401).json({loggedOut: true, message: "Please try logging in again"})
+      res
+        .status(401)
+        .json({ loggedOut: true, message: 'Please try logging in again' });
     }
   } catch (err) {
     res
       .status(403)
-      .json({ message: 'access token missing or wrong', errors: err.errors })
+      .json({ message: 'access token missing or wrong', errors: err.message });
   }
-}
+};
 
 // Start defining your routes here
 app.get('/', (req, res) => {
@@ -74,17 +67,17 @@ app.get('/', (req, res) => {
 });
 
 // Creating user who is signing up
-app.post('/users', async (req, res) => {
+app.post('/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
     const user = new User({ name, email, password: bcrypt.hashSync(password) });
     const saved = await user.save();
-    res
-      .status(201).json({saved}); 
+    res.status(201).json(saved);
   } catch (err) {
+    console.error(err.message);
     res
       .status(400)
-      .json({ message: 'could not create user', error: err.errors });
+      .json({ message: 'Error! Could not create user', error: err.message });
   }
 });
 
@@ -95,38 +88,37 @@ app.post('/users', async (req, res) => {
 
 // Secure endpoint, user needs to be logged in to access this.
 // This function calls up to the const authenticateUser further up
-app.get('/users/:id', authenticateUser)
+app.get('/users/:id', authenticateUser);
 app.get('/users/:id', (req, res) => {
-  res.send('YEAH')
-  // try {
-  //   res.status(201).json(req.user)
-  // } catch (err) {
-  //   res.status(400).json({message: 'could not save user', errors: err.errors})
-  // }
-})
+  try {
+    res.status(201).json(req.user);
+  } catch (err) {
+    res
+      .status(400)
+      .json({ message: 'could not save user', errors: err.message });
+  }
+});
 
 // Member signing in
 app.post('/sessions', async (req, res) => {
-  try {  
-    const { email, password } = req.body
+  try {
+    const { email, password } = req.body;
 
-    const user = await User.findOne({ email }) //retrieve user, can use name too, change in const above in that case
-    if (user && bcrypt.compareSync(password, user.password)) { //comparing passwords so the member already has signed up
-      //success 
-      res.status(201).json({ userId: user._id, accessToken: user.accessToken })
+    const user = await User.findOne({ email }); //retrieve user, can use name too, change in const above in that case
+    if (user && bcrypt.compareSync(password, user.password)) {
+      //comparing passwords so the member already has signed up
+      //success
+      res.status(201).json({ userId: user._id, accessToken: user.accessToken });
     } else {
-      //faliure 
-      res.json({ notFund: true })
+      //faliure
+      res.json({ message: 'wrong username or paaaword' });
     }
   } catch (err) {
-    res.status(400).json({ message: 'could not find user', errors: err.errors })
+    res.status(400).json({ errors: err.errors });
   }
-})
+});
 
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
-
-
-

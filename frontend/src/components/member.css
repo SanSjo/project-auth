@@ -1,66 +1,66 @@
 /*****MEMBER PAGE********/
 
-.memberSection {  
-    flex-wrap: wrap;
-    flex-direction: column;
-    background-color: #5eb2c2;
-    padding: 30px;
-    color: #fff;
-    font-size: 20px;
-  }
-  
-  .memberSection h1 {
-    margin: 5px 10px 5px 0;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 13px;
-  }
+.memberSection {
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: #5eb2c2;
+  padding: 30px;
+  color: #fff;
+  font-size: 20px;
+  width: 500px;
+}
 
-  .memberSection h2 {
-    margin: 5px 10px 5px 0;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 13px;
-    font-size: 15px;
-  }
+.memberSection h1 {
+  margin: 5px 10px 5px 0;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 13px;
+}
 
-  /*Style for the label and input*/
-  .infoContainer {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-items: center;
-    width: auto;
-  }
+.memberSection h2 {
+  margin: 5px 10px 5px 0;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 13px;
+  font-size: 15px;
+}
 
-  /*Style for the text field*/
-  .memberSection input {
-    justify-items: center;
-    font-size: 10px;
-    margin: 5px 10px 5px 0;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    background: #f1f1f1; 
-  }
-    
-  /*changes the color of the button upon hovering*/
-  .memberSection button:hover {
-    background-color:#bceaef;
-    color: #fff;
-  }
-    
-  /* The submit button styling */
-  .memberSection button {
-    color: #bceaef;
-    font-size: 15px;
-    border: #fff;
-    border-radius: 40px; /* Button gets rounded corners */ ;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 9px;
-    display: inline-block;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
+/*Style for the label and input*/
+.infoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-items: center;
+  width: auto;
+}
+
+/*Style for the text field*/
+.memberSection input {
+  justify-items: center;
+  font-size: 10px;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  background: #f1f1f1;
+}
+
+/*changes the color of the button upon hovering*/
+.memberSection button:hover {
+  background-color: #bceaef;
+  color: #fff;
+}
+
+/* The submit button styling */
+.memberSection button {
+  color: #bceaef;
+  font-size: 15px;
+  border: #fff;
+  border-radius: 40px; /* Button gets rounded corners */
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 9px;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 20px;
+}
