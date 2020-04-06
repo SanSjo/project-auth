@@ -14,6 +14,10 @@ export const App = () => {
           {/* Added exact above */}
           <div className="authContainer">
             <Registration />
+          </div>
+        </Route>
+        <Route path="/Login" exact>
+          <div className="authContainer">
             <Login />
           </div>
         </Route>

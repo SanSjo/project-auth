@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // import { Link } from "react-router-dom";
 import './login.css';
 import { useHistory } from 'react-router';
+import { useForm } from 'react-hook-form';
 
 const URL = 'https://authorisation-app.herokuapp.com/sessions';
 
@@ -10,10 +11,9 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState(null);
   const history = useHistory();
-
+  const { register, errors } = useForm();
   const onLoggedIn = (event) => {
     console.log('login successfull');
-    history.push('/MemberPage');
   };
 
   // To log in an exicting member
@@ -45,7 +45,11 @@ export const Login = () => {
           window.localStorage.setItem('userId', user.userId);
           window.localStorage.setItem('accessToken', user.accessToken);
 
-          history.push('/MemberPage');
+          if (email < 0) {
+            return alert('Please fill in email and password');
+          } else {
+            history.push('/MemberPage');
+          }
         }
       })
       .catch((err) => console.log('error:', err));
@@ -64,13 +68,16 @@ export const Login = () => {
           <input
             value={email}
             placeholder="Enter Email"
+            minLength="0"
             type="email"
             name="email"
             onChange={(event) => {
               setEmail(event.target.value);
             }}
             required
-          ></input>
+          >
+            {errors.email && errors.email.message}
+          </input>
 
           <label>Password: </label>
           <input
@@ -85,9 +92,7 @@ export const Login = () => {
           ></input>
           {errorMsg && <div className="error-message"> {errorMsg} </div>}
 
-          <button onClick={handleFormSubmit} type="submit">
-            Login
-          </button>
+          <button type="submit">Login</button>
         </div>
       </form>
     </section>

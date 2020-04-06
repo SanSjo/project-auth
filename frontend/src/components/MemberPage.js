@@ -13,10 +13,10 @@ export const MemberPage = () => {
     fetch(`${URL}/${userId}`, {
       method: 'GET', // changed from POST
       headers: {
-        Authorization: accessToken
-      }
+        Authorization: accessToken,
+      },
     })
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
           return response.json();
         } else {
@@ -24,11 +24,11 @@ export const MemberPage = () => {
           throw new Error(response.json());
         }
       })
-      .then(user => {
+      .then((user) => {
         setUser(user);
         setAuthorized(true);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('ERROR', err);
       });
   }, [userId, accessToken]);
@@ -39,7 +39,7 @@ export const MemberPage = () => {
   };
 
   return (
-    <div>
+    <div className="messageContainer">
       {/* if authorized display member section */}
       {authorized && (
         <section className="memberSection">

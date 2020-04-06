@@ -1,5 +1,9 @@
 /*****MEMBER PAGE********/
-
+.messageContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 .memberSection {
   flex-wrap: wrap;
   flex-direction: column;
