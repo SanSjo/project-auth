@@ -8,9 +8,9 @@ On the frontend side of things, a registration form is build which POSTs to the 
 Once a user is logged in, there is a final endpoint which returns some content which only logged-in users should be able to access.
 
 # View it live
-Heroku https://project20-auth.herokuapp.com/
+Heroku https://authorisation-app.herokuapp.com
 
-Netlify https://project20-auth.netlify.com/
+Netlify https://project-auth.netlify.com/
 
 # The problem
 We worked in teams (one located on Bali!) with one coding and one driving. The problems was to tie it all together with the different endpoints but with help from google and classmates we solved the problem
