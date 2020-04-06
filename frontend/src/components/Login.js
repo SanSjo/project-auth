@@ -34,20 +34,20 @@ export const Login = () => {
           });
         }
       })
-      .then(({ accessToken }) => {
-        window.localStorage.setItem('accessToken', accessToken);
-        onLoggedIn();
+      // .then(({ accessToken }) => {
+      //   window.localStorage.setItem('accessToken', accessToken);
+      //   onLoggedIn();
+      // })
+      .then((user) => {
+        if (user['message']) {
+          setErrorMsg(user.message);
+        } else {
+          window.localStorage.setItem('userId', user.userId);
+          window.localStorage.setItem('accessToken', user.accessToken);
+
+          history.push('/MemberPage');
+        }
       })
-      // .then((user) => {
-      //   if (user['message']) {
-      //     setErrorMsg(user.message);
-      //   } else {
-      //     window.localStorage.setItem('userId', user.userId);
-      //     window.localStorage.setItem('accessToken', user.accessToken);
-      //     //window.location.href = '/MemberPage';
-      //     history.push = '/MemberPage';
-      //   }
-      //})
       .catch((err) => console.log('error:', err));
   };
 
