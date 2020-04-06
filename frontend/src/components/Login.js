@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 // import { Link } from "react-router-dom";
 import './login.css';
 import { useHistory } from 'react-router';
-import { useForm } from 'react-hook-form';
 
 const URL = 'https://authorisation-app.herokuapp.com/sessions';
 
@@ -11,10 +10,6 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState(null);
   const history = useHistory();
-  const { register, errors } = useForm();
-  const onLoggedIn = (event) => {
-    console.log('login successfull');
-  };
 
   // To log in an exicting member
   const handleFormSubmit = (event) => {
@@ -75,9 +70,7 @@ export const Login = () => {
               setEmail(event.target.value);
             }}
             required
-          >
-            {errors.email && errors.email.message}
-          </input>
+          ></input>
 
           <label>Password: </label>
           <input
