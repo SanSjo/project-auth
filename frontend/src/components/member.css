@@ -68,3 +68,7 @@
   cursor: pointer;
   margin-top: 20px;
 }
+
+.memberName {
+  text-transform: uppercase;
+}

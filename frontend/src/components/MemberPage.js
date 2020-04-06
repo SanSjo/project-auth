@@ -44,7 +44,7 @@ export const MemberPage = () => {
       {authorized && (
         <section className="memberSection">
           <h2>Member information</h2>
-          <h3>{user.name}</h3>
+          <h3 className="memberName">{user.name}</h3>
           <h3>You can't imagine how awesome you are!</h3>
           <div className="infoContainer">
             <button
