@@ -13,11 +13,17 @@ code {
     monospace;
 }
 
+#root {
+  position: absolute;
+  width: 100%;
+}
+
 .authContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   position: absolute;
+  width: 100%;
 }
 
 .error-message {

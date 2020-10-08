@@ -5,6 +5,7 @@
     "postinstall": "npm install --prefix backend"
   },
   "dependencies": {
+    "react-hook-form": "^5.3.1",
     "react-router": "^5.1.2"
   }
 }

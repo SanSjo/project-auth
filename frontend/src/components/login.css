@@ -1,72 +1,74 @@
 /*****LOGIN/FORM********/
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+.loginForm {
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  background-color: #f1adbf;
+  padding: 68px;
+  color: #fff;
+  font-size: 20px;
+  width: 50%;
+}
 
-.loginForm {  
-    /* flex-wrap: wrap; */
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    align-items: center;
-    background-color: #f1adbf;
-    padding: 68px;
-    color: #fff;
-    font-size: 20px;
+.loginForm h1 {
+  margin: 5px 10px 5px 0;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 13px;
+}
 
-  }
-  
-  .loginForm h1 {
-    margin: 5px 10px 5px 0;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 13px;
-  }
+.loginForm h2 {
+  margin: 5px 10px 5px 0;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 13px;
+  font-size: 15px;
+}
 
-  .loginForm h2 {
-    margin: 5px 10px 5px 0;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 13px;
-    font-size: 15px;
-  }
-    
-  .loginContainer {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-items: center;
-  }
+.loginContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-items: center;
+}
 
-  /*Style for the text field*/
-  .loginForm input {
-    flex-wrap: wrap;
-    justify-items: center;
-    font-size: 10px;
-    margin: 5px 10px 5px 0;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    background: #f1f1f1;
-    /* border-radius: 15px; /* border gets rounded corners */  
-  }
-    
-  /*changes the color of the button upon hovering*/
-  .loginForm button:hover {
-    background-color:#fbe9e4;
-    color: #fff;
-  }
-    
-  /* The submit button styling */
-  .loginForm button {
-    color: #f1adbf;
-    font-size: 15px;
-    border: #fff;
-    border-radius: 40px; /* Button gets rounded corners */ ;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 9px;
-    display: inline-block;
-    cursor: pointer;
-    margin-top: 20px;
-   
-  }
+/*Style for the text field*/
+.loginForm input {
+  flex-wrap: wrap;
+  justify-items: center;
+  font-size: 10px;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  background: #f1f1f1;
+  /* border-radius: 15px; /* border gets rounded corners */
+}
 
-  
+/*changes the color of the button upon hovering*/
+.loginForm button:hover {
+  background-color: #fbe9e4;
+  color: #fff;
+}
+
+/* The submit button styling */
+.loginForm button {
+  color: #684b52;
+  font-size: 15px;
+  border: #fff;
+  border-radius: 40px; /* Button gets rounded corners */
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 9px;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 20px;
+}

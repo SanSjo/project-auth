@@ -12,21 +12,21 @@ mongoose.Promise = Promise;
 const User = mongoose.model('User', {
   name: {
     type: String,
-    unique: true
+    unique: true,
   },
   email: {
     type: String,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
 
   accessToken: {
     type: String,
-    default: () => crypto.randomBytes(128).toString('hex')
-  }
+    default: () => crypto.randomBytes(128).toString('hex'),
+  },
 });
 
 // Defines the port the app will run on. Defaults to 8080, but can be
@@ -43,9 +43,9 @@ app.use(bodyParser.json());
 const authenticateUser = async (req, res, next) => {
   try {
     const user = await User.findOne({
-      accessToken: req.header('Authorization')
+      accessToken: req.header('Authorization'),
     });
-    user.password = undefined; // so password is not returned
+    user.password = undefined; //so password is not returned
     if (user) {
       req.user = user;
       next();
@@ -72,7 +72,9 @@ app.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
     const user = new User({ name, email, password: bcrypt.hashSync(password) });
     const saved = await user.save();
+    //user.save();
     res.status(201).json(saved);
+    //res.status(201)._destroy({ id: user._id, accessToken: user.accessToken });
   } catch (err) {
     console.error(err.message);
     res
@@ -111,7 +113,7 @@ app.post('/sessions', async (req, res) => {
       res.status(201).json({ userId: user._id, accessToken: user.accessToken });
     } else {
       //faliure
-      res.json({ message: 'wrong username or paaaword' });
+      res.json({ message: 'wrong username or password' });
     }
   } catch (err) {
     res.status(400).json({ errors: err.errors });
